@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>The Weekly Edit No.32 — PatPat 每周精品推荐</title>
+<style>
+@font-face{font-family:PPBody;src:url([DATAURI]) format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:PPBody;src:url([DATAURI]) format("truetype");font-weight:600;font-display:swap}
+@font-face{font-family:PPDisplay;src:url([DATAURI]) format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:PPMoment;src:url([DATAURI]) format("truetype");font-weight:400;font-display:swap}
+
+:root{
+  /* palette lifted from www.patpat.com */
+  --ink:#22292D;            /* site body color */
+  --ink-2:#5C666C;
+  --ink-3:#8B9499;
+  --brand:#FF405F;          /* site brand pink */
+  --brand-tint:rgba(255,64,95,.06);
+  --paper:#FFFFFF;
+  --mist:#ECEDED;           /* site neutral, nudged so the white sheet reads over it */
+  /* the evening ramp — desaturated toward the brand's own ink */
+  --d0:#FFFFFF;
+  --d1:#FAFAFA; --d2:#EFF1F1; --d3:#DDE0E1; --d4:#B7BDC0; --d5:#6C7378; --d6:#22292D;
+  --on-dark:#F2F4F4;
+  --card:#FFFFFF;
+  --rule:rgba(34,41,45,.13);
+  --shadow:0 18px 44px -28px rgba(34,41,45,.55);
+  --display:PPDisplay,"DM Serif Text",Georgia,serif;
+  --body:PPBody,Inter,system-ui,-apple-system,"PingFang SC",sans-serif;
+  --mono:PPMoment,"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --wrap:1140px;
+  --radius:32px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ink:#EDEFEF; --ink-2:#A7AFB3; --ink-3:#7C858A;
+    --paper:#141719; --mist:#1B1F21; --card:#F4F5F5;
+    --d0:#202426; --d1:#1B1F21; --d2:#181B1D; --d3:#141719; --d4:#111315; --d5:#0D0F10; --d6:#08090A;
+    --rule:rgba(237,239,239,.15);
+    --brand-tint:rgba(255,64,95,.13);
+    --shadow:0 18px 44px -28px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#EDEFEF; --ink-2:#A7AFB3; --ink-3:#7C858A;
+  --paper:#141719; --mist:#1B1F21; --card:#F4F5F5;
+  --d0:#202426; --d1:#1B1F21; --d2:#181B1D; --d3:#141719; --d4:#111315; --d5:#0D0F10; --d6:#08090A;
+  --rule:rgba(237,239,239,.15);
+  --brand-tint:rgba(255,64,95,.13);
+  --shadow:0 18px 44px -28px rgba(0,0,0,.9);
+}
+:root[data-theme="light"]{
+  --ink:#22292D; --ink-2:#5C666C; --ink-3:#8B9499;
+  --paper:#FFFFFF; --mist:#F1F1F1; --card:#FFFFFF;
+  --d0:#FFFFFF; --d1:#FAFAFA; --d2:#EFF1F1; --d3:#DDE0E1; --d4:#B7BDC0; --d5:#6C7378; --d6:#22292D;
+  --rule:rgba(34,41,45,.13);
+  --brand-tint:rgba(255,64,95,.06);
+  --shadow:0 18px 44px -28px rgba(34,41,45,.55);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:16px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+h1,h2,h3{text-wrap:balance;margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:4px}
+
+/* ── floating pill nav, same move as the live site ── */
+.nav{position:sticky;top:0;z-index:60;padding:14px 20px 0;background:transparent}
+.nav-in{max-width:var(--wrap);margin:0 auto;background:var(--card);
+  border-radius:999px;padding:11px 14px 11px 20px;
+  display:flex;align-items:center;gap:26px;
+  box-shadow:0 1px 3px rgba(34,41,45,.09),0 10px 34px -22px rgba(34,41,45,.5)}
+.logo{display:flex;align-items:center;gap:8px;font-family:var(--display);
+  font-size:20px;letter-spacing:-.01em;color:#22292D;flex:none}
+.logo .mark{width:15px;height:15px;border-radius:50% 50% 50% 2px;background:var(--brand);flex:none;transform:rotate(-8deg)}
+.nav-links{display:flex;gap:20px;font-size:14px;color:#5C666C;flex-wrap:wrap}
+.nav-links span{white-space:nowrap}
+.nav-links .on{color:#22292D;font-weight:600;background:var(--brand-tint);
+  padding:5px 11px;border-radius:8px;margin:-5px 0}
+.nav-btn{margin-left:auto;font:inherit;font-size:13px;flex:none;
+  border:1px solid rgba(34,41,45,.28);background:transparent;color:#22292D;
+  padding:8px 15px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.nav-btn:hover{background:#22292D;color:#fff;border-color:#22292D}
+
+/* ── hero ── */
+.hero{background:var(--mist);margin-top:-64px;padding:104px 20px 78px}
+.hero-in{max-width:var(--wrap);margin:0 auto;display:grid;
+  grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-2);display:flex;align-items:center;gap:9px;margin-bottom:20px}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--brand);flex:none}
+h1{font-family:var(--display);font-size:clamp(38px,5vw,64px);line-height:1.03;
+  letter-spacing:-.02em;margin-bottom:22px}
+.dek{font-size:17px;line-height:1.62;color:var(--ink-2);max-width:44ch;margin:0 0 26px}
+.meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase}
+.hero-fig{border-radius:20px;overflow:hidden;background:var(--card);box-shadow:var(--shadow);
+  aspect-ratio:5/4.6}
+.hero-fig img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+
+/* ── hero 场景图版位（待产）── */
+.scene-wrap{max-width:var(--wrap);margin:0 auto 42px}
+.scene{position:relative;border-radius:20px;aspect-ratio:2/1;overflow:hidden;
+  border:1px dashed rgba(34,41,45,.3);
+  background:
+    repeating-linear-gradient(135deg,rgba(34,41,45,.028) 0 12px,transparent 12px 24px),
+    var(--d2);
+  display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;padding:34px 34px}
+:root[data-theme="dark"] .scene,html:not([data-theme]) .scene{}
+@media (prefers-color-scheme:dark){.scene{border-color:rgba(237,239,239,.3);
+  background:repeating-linear-gradient(135deg,rgba(237,239,239,.035) 0 12px,transparent 12px 24px),var(--d2)}}
+:root[data-theme="dark"] .scene{border-color:rgba(237,239,239,.3);
+  background:repeating-linear-gradient(135deg,rgba(237,239,239,.035) 0 12px,transparent 12px 24px),var(--d2)}
+:root[data-theme="light"] .scene{border-color:rgba(34,41,45,.3);
+  background:repeating-linear-gradient(135deg,rgba(34,41,45,.028) 0 12px,transparent 12px 24px),var(--d2)}
+.scene-slot{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--brand);margin-bottom:14px}
+.scene h3{font-family:var(--display);font-size:clamp(20px,2.2vw,27px);line-height:1.25;margin-bottom:12px}
+.scene .brief{font-size:14px;line-height:1.8;color:var(--ink-2);max-width:46ch}
+.scene .brief b{color:var(--ink)}
+.stand{width:170px;flex:none;text-align:center}
+.stand img{border-radius:10px;background:#fff;box-shadow:var(--shadow)}
+.stand figcaption{font-size:11px;line-height:1.6;color:var(--ink-3);margin-top:9px}
+
+/* ── Moment 小地图：每周教育一次品牌导购体系 ── */
+.mmap{background:var(--d0);padding:26px 40px 0}
+.mmap .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.mmap ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;
+  gap:8px 22px;font-family:var(--mono);font-size:12.5px;letter-spacing:.02em}
+.mmap li{color:var(--ink-3)}
+.mmap li.on{color:var(--ink);font-weight:600;position:relative}
+.mmap li.on::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--brand)}
+
+/* ── 品牌落款 ── */
+.signoff{background:var(--d6);color:var(--on-dark);padding:0 40px 56px}
+.signoff-in{border-top:1px solid rgba(242,244,244,.18);padding-top:28px}
+.signoff p{margin:0;font-family:var(--display);font-size:clamp(18px,1.9vw,23px);
+  line-height:1.45;max-width:34ch}
+.signoff .sub{font-family:var(--body);font-size:13px;color:rgba(242,244,244,.62);
+  margin-top:10px;max-width:46ch;line-height:1.6}
+.signoff .zh{border-left-color:rgba(242,244,244,.3);color:rgba(242,244,244,.78)}
+
+/* ── fit note：下单前最后一道顾虑 ── */
+.fit{font-family:var(--mono);font-size:11.5px;letter-spacing:.01em;
+  color:var(--ink-2);margin-top:10px}
+
+/* ── detail-shot production requirement (to-do marker for design) ── */
+.shot-det-req{border-radius:14px;border:1px dashed rgba(34,41,45,.35);
+  background:#FFFFFF;
+  padding:12px 14px;margin-top:10px}
+.req-label{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--brand);font-weight:600;margin-bottom:4px}
+.req-brief{font-size:12px;line-height:1.5;color:var(--ink-2);margin:0}
+.fit::before{content:"FIT · ";color:var(--brand);font-weight:600}
+
+/* ── 每件的下单入口 ── */
+.cta{display:inline-block;margin-top:14px;font-size:13px;font-weight:600;text-decoration:none;
+  border:1px solid rgba(34,41,45,.32);border-radius:56px;padding:9px 18px;color:var(--ink)}
+.cta:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.s5 .cta,.s6 .cta{border-color:rgba(242,244,244,.45);color:var(--on-dark)}
+.s5 .cta:hover,.s6 .cta:hover{background:#fff;color:#22292D;border-color:#fff}
+
+/* ── 从众条 ── */
+.proof{background:var(--d0);color:var(--ink);padding:12px 40px 38px}
+.proof-in{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:26px 0}
+.proof .n{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:23px;
+  letter-spacing:0;color:var(--ink);display:block;margin-bottom:5px}
+.proof p{margin:0;font-size:13.5px;line-height:1.6;color:var(--ink-2)}
+.proof .zh{color:var(--ink-2)}
+
+/* ── 稀缺 / 时间边界 ── */
+.until{background:var(--d6);color:var(--on-dark);padding:0 40px 30px}
+.until .zh{border-left-color:rgba(242,244,244,.3);color:rgba(242,244,244,.78)}
+.until-in{border-top:1px solid rgba(242,244,244,.18);padding-top:26px;
+  display:flex;gap:20px;align-items:baseline;flex-wrap:wrap}
+.until .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#FF8098}
+.until p{margin:0;font-family:var(--display);font-size:clamp(19px,2vw,24px);line-height:1.35}
+
+/* ── 面料细节位 ── */
+.edband{background:var(--d0);padding:6px 40px 34px}
+.shotcol{display:flex;flex-direction:column;gap:12px;justify-self:end;width:100%;max-width:360px}
+.shot-det{border-radius:12px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+.shot-det img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.det-cap{margin:8px 0 0;font-size:12.5px;line-height:1.55;color:var(--ink-2)}
+.s5 .det-cap,.s6 .det-cap{color:rgba(242,244,244,.72)}
+.shotcol .zh{margin:6px 0 0;font-size:12px}
+
+.edline{font-family:var(--display);font-size:clamp(18px,1.9vw,23px);line-height:1.4;
+  margin:0;color:var(--ink);max-width:44ch}
+
+/* ── sheet: big radius curving over the hero, like the site ── */
+.sheet{max-width:calc(var(--wrap) + 40px);margin:-40px auto 0;
+  border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;position:relative;z-index:2}
+
+.evidence{background:var(--d0);padding:34px 40px;border-bottom:1px solid var(--rule)}
+.evidence .lab{font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--brand);margin-bottom:9px}
+.evidence h2{font-family:var(--display);font-size:clamp(25px,2.8vw,34px);line-height:1.2;margin-bottom:22px}
+.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.benefit{border-top:2px solid var(--brand);padding-top:14px}
+.benefit h3{font-family:var(--mono);font-size:15px;line-height:1.3;margin-bottom:7px}
+.benefit p{margin:0;font-size:14px;line-height:1.6;color:var(--ink-2)}
+.evidence .source{margin:20px 0 0;font-size:11px;line-height:1.5;color:var(--ink-3)}
+.evidence .num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600}
+
+.stop{padding:56px 40px}
+.stop-in{display:grid;grid-template-columns:88px 1fr 360px;gap:36px;align-items:start}
+.clock{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12.5px;
+  letter-spacing:.02em;color:var(--ink-2);position:relative;align-self:start;padding-top:10px}
+.clock::after{content:"";position:absolute;left:-18px;top:2px;bottom:-56px;width:1px;background:currentColor;opacity:.28}
+.stop:last-of-type .clock::after{bottom:auto;height:16px}
+.stop h2{font-family:var(--display);font-size:clamp(23px,2.5vw,31px);line-height:1.18;
+  letter-spacing:-.01em;margin-bottom:13px}
+.why{font-size:15.5px;line-height:1.68;color:var(--ink-2);margin:0 0 20px;max-width:44ch}
+.buy{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.buy .name{font-size:13px;color:var(--ink-2);max-width:32ch;line-height:1.45}
+.buy .price{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;font-size:15px;color:var(--ink)}
+.shot{border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+
+.timeline{background:linear-gradient(180deg,var(--d1) 0%,var(--d2) 20%,var(--d3) 40%,var(--d4) 60%,var(--d5) 80%,var(--d6) 100%)}
+.s5{color:var(--on-dark)} .s6{color:var(--on-dark)}
+.s5 .clock,.s5 .why,.s5 .buy .name,.s6 .clock,.s6 .why,.s6 .buy .name{color:rgba(242,244,244,.76)}
+.s5 .buy .price,.s6 .buy .price{color:var(--on-dark)}
+
+/* ── all-of-edit + tail ── */
+.allband{background:var(--d6);color:var(--on-dark);padding:6px 40px 48px}
+.allband-in{display:flex;gap:30px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap}
+.allband h3{font-family:var(--display);font-size:clamp(23px,2.4vw,30px);line-height:1.2}
+.pill{font-size:13.5px;text-decoration:none;white-space:nowrap;background:#fff;color:#22292D;
+  border-radius:56px;padding:14px 22px;font-weight:600;display:inline-block}
+.pill:hover{background:var(--brand);color:#fff}
+
+.tail{background:var(--d6);color:var(--on-dark);padding:0 40px 64px}
+.tail-in{display:grid;grid-template-columns:1fr 1fr;gap:44px;
+  border-top:1px solid rgba(242,244,244,.18);padding-top:40px}
+.tail .eyebrow{color:rgba(242,244,244,.6)}
+.tail h3{font-family:var(--display);font-size:26px;line-height:1.24;margin-bottom:11px}
+.tail p{margin:0;color:rgba(242,244,244,.72);max-width:40ch;font-size:15px;line-height:1.66}
+.tail .link{display:inline-block;margin-top:16px;font-size:13.5px;text-decoration:none;
+  border-bottom:1px solid rgba(242,244,244,.45);padding-bottom:3px}
+.tail .link:hover{border-color:var(--brand);color:var(--brand)}
+
+.foot{max-width:var(--wrap);margin:0 auto;padding:26px 20px 60px;
+  font-size:12px;color:var(--ink-3);display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between}
+
+/* ── annotation layer ── */
+.note{display:none;border-left:2px solid var(--brand);background:var(--brand-tint);
+  padding:13px 16px;margin-top:18px;font-size:13.5px;line-height:1.75;border-radius:0 8px 8px 0;color:var(--ink)}
+.note b{color:var(--brand);font-weight:600}
+.note .warn{color:var(--brand);font-weight:600}
+.s5 .note,.s6 .note,.allband .note,.tail .note,.proof .note,.until .note{background:rgba(255,255,255,.09);color:var(--on-dark);border-left-color:var(--brand)}
+.s5 .note b,.s6 .note b,.allband .note b,.tail .note b,.proof .note b,.until .note b,
+.s5 .note .warn,.s6 .note .warn,.tail .note .warn,.proof .note .warn,.until .note .warn{color:#FF8098}
+body.notes .note{display:block}
+body.notes .nav-btn{background:#22292D;color:#fff;border-color:#22292D}
+.note-only{display:none}
+body.notes .note-only{display:block}
+
+/* ── 中文对照层 ── */
+.zh{display:none;margin:10px 0 18px;padding-left:13px;border-left:2px solid rgba(34,41,45,.16);
+  font-size:14px;line-height:1.78;color:var(--ink-2)}
+.zh-lg{font-size:16.5px;line-height:1.7;color:var(--ink)}
+.zh-sm{font-size:12.5px;line-height:1.7;margin:8px 0 0}
+.s5 .zh,.s6 .zh,.allband .zh,.tail .zh{border-left-color:rgba(242,244,244,.3);color:rgba(242,244,244,.78)}
+.s5 .zh-lg,.s6 .zh-lg,.allband .zh-lg,.tail .zh-lg{color:var(--on-dark)}
+body.zh-on .zh{display:block}
+body.zh-on .zh-btn{background:#22292D;color:#fff;border-color:#22292D}
+.zh-banner{display:none;max-width:var(--wrap);margin:0 auto;padding:14px 20px 0}
+.zh-banner div{background:var(--card);border-radius:14px;padding:11px 16px;
+  font-size:13px;line-height:1.7;color:var(--ink-2);
+  display:flex;gap:10px;align-items:flex-start;
+  box-shadow:0 1px 3px rgba(34,41,45,.08)}
+.zh-banner .dot{width:6px;height:6px;border-radius:50%;background:var(--brand);flex:none;margin-top:7px}
+body.zh-on .zh-banner{display:block}
+
+@media (max-width:1000px){
+  .scene{grid-template-columns:1fr;aspect-ratio:auto;gap:22px}
+  .stand{width:130px}
+  .stop-in{grid-template-columns:74px 1fr}
+  .shot,.shotcol{grid-column:2;max-width:330px;margin-top:4px;justify-self:start}
+  .hero-in{grid-template-columns:1fr;gap:32px}
+}
+@media (max-width:1000px){
+  .proof-in{grid-template-columns:1fr 1fr;gap:20px}
+}
+@media (max-width:600px){
+  .proof-in{grid-template-columns:1fr;gap:15px}
+}
+@media (max-width:680px){
+  .nav{padding:12px 12px 0}
+  .nav-in{gap:8px;padding:9px 10px 9px 14px}
+  .nav-links{display:none}
+  .logo{font-size:18px}
+  .nav-btn{padding:7px 11px;font-size:11.5px}
+  #toggle{margin-left:6px!important}
+  .hero{padding:92px 16px 58px}
+  .sheet{margin-left:8px;margin-right:8px;border-radius:24px 24px 0 0}
+  .evidence,.stop,.allband,.tail,.edband,.proof,.until,.mmap,.signoff{padding-left:20px;padding-right:20px}
+  .stop-in{grid-template-columns:64px 1fr;gap:16px}
+  .clock::after{left:-10px}
+  .tail-in{grid-template-columns:1fr;gap:32px}
+  .benefit-grid{grid-template-columns:1fr;gap:18px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="nav">
+<div class="nav-in">
+<span class="logo"><span class="mark"></span>PatPat</span>
+<nav class="nav-links">
+<span>Featured</span><span>ComfortTech™</span><span>Moments</span>
+<span class="on">Weekly Edit</span><span>Disney</span><span>Shop</span>
+</nav>
+<button aria-pressed="false" class="nav-btn zh-btn" id="zh">中文对照</button>
+
+</div>
+</header>
+<div class="zh-banner"><div><span class="dot"></span>
+<span><b>中文只是对照说明</b>，帮你看懂这版英文在说什么。上线版本是英文——读者是美国妈妈，不做中英双语页面。</span>
+</div></div>
+<section class="hero">
+<div class="hero-in">
+<div>
+<div class="eyebrow"><span class="dot"></span>No. 32  ·  Sleep  ·  Bamboo  ·  Aug 3–9</div>
+<h1>Sleep Cool in Soft Bamboo</h1>
+<div class="zh zh-lg">穿着柔软竹纤维，清凉入睡。</div>
+<p class="dek">Six breathable bamboo picks for babies, kids, and matching family moments.</p>
+<div class="zh">六件透气竹纤维精选，适合宝宝、孩子和全家亲子时刻。</div>
+<div class="meta" style="margin-top:22px">Edited by the PatPat team, making kidswear since 2014  ·  New every Monday</div>
+<div class="zh zh-sm">第 32 期 · Sleep · 竹纤维 · 8 月 3–9 日 ｜ PatPat 团队编选，做童装 12 年 · 每周一更新</div>
+
+
+
+</div>
+<div class="hero-fig">
+<a href="https://www.patpat.com/products/family-matching-bamboo-pajamas-buttery-soft-bamboo-viscose-pjs-for-men-women-kids-toddler-baby-solid-color-short-sleeve-shirt-shorts-sleepwear-green" rel="noopener" target="_blank">
+<img alt="Mother and toddler in matching green short-sleeve bamboo pajamas" src="https://cdn.shopify.com/s/files/1/0705/3885/4643/files/02_3daaa215-79ae-4f67-90f7-beed27560d2b.png?v=1785123675" style="object-position:50% 30%"/>
+</a>
+</div>
+</div>
+</section>
+<main class="sheet">
+<section class="evidence">
+<div class="lab">ComfortTech™  ·  CloudSoft™</div>
+<h2>Why Bamboo for Bedtime?</h2>
+<div class="benefit-grid">
+<div class="benefit"><h3>Buttery Soft</h3><p>Flexes more easily than cotton for a smooth, cozy feel.</p></div>
+<div class="benefit"><h3>More Breathable</h3><p>Helps release heat for cooler, more comfortable sleep.</p></div>
+<div class="benefit"><h3>Gentle on Delicate Skin</h3><p>A smooth, low-prickle feel for babies and kids.</p></div>
+</div>
+<p class="source">Based on internal lab testing against cotton.</p>
+<div class="zh">为什么睡觉适合穿竹纤维？柔软顺滑、更透气，也更温和地贴合宝宝和孩子娇嫩的皮肤。以上结果基于与棉质面料的内部实验室测试。</div>
+</section>
+<div class="timeline">
+<article class="stop s1"><div class="stop-in">
+<div class="clock">7:15 PM</div>
+<div>
+<h2>Fresh from the Bath</h2>
+<div class="zh zh-lg">刚洗完澡，清爽入睡。</div>
+<p class="why">Breathable bamboo helps little bodies cool down before bed.</p>
+<div class="buy"><span class="name">Milk &amp; Cookies Pajama Set</span><span class="price">$24.99</span></div>
+<div class="fit">Snug fit · Size up for more room</div>
+<a class="cta" href="https://www.patpat.com/products/bamboo-babytoddler-2-piece-childlike-animal-print-snug-fitting-pajamas-set-blue" rel="noopener" target="_blank">Shop this →</a>
+<div class="zh">透气竹纤维帮助小身体在睡前凉快下来。<br/><span style="opacity:.75">牛奶饼干印花两件套</span></div>
+
+</div>
+<div class="shot"><img alt="Toddler in a blue milk-and-cookies print bamboo pajama set holding a teddy bear" src="https://cdn.shopify.com/s/files/1/0705/3885/4643/files/02_c530b2c5-c193-4d1d-93e3-524f6f9fdbc2.webp?v=1783065260" width="440"/></div>
+<div class="shot-det-req" style="grid-column:1/-1">
+<span class="req-label">细节图待设计</span>
+<p class="req-brief">面料微距+手轻轻拉开面料，证明软/透气/有弹性，洗完澡穿上舒服。</p>
+</div>
+</div></article>
+<article class="stop s2"><div class="stop-in">
+<div class="clock">7:40 PM</div>
+<div>
+<h2>Dressed in Ten Seconds</h2>
+<div class="zh zh-lg">十秒穿好。</div>
+<p class="why">A two-way zip makes post-bath changes quick and fuss-free.</p>
+<div class="buy"><span class="name">Two-Way Zip Bamboo Onesie</span><span class="price">$19.99</span></div>
+<div class="fit">Snug fit · Size up between sizes</div>
+<a class="cta" href="https://www.patpat.com/products/bamboo-baby-boygirl-zip-up-pajamas-pale-green" rel="noopener" target="_blank">Shop this →</a>
+<div class="zh">双向拉链，让洗澡后的换衣快速又省心。<br/><span style="opacity:.75">竹纤维双向拉链连体衣</span></div>
+
+</div>
+<div class="shotcol">
+<div class="shot"><img alt="Baby lying down in a pale green bamboo two-way zip onesie" src="https://cdn.shopify.com/s/files/1/0705/3885/4643/files/9629211099379-02.jpg?v=1785227183" width="440"/></div>
+<div>
+<div class="shot-det"><img alt="Close-up detail of a pale green bamboo zip onesie" src="https://cdn.shopify.com/s/files/1/0705/3885/4643/files/9629211099379-04.jpg?v=1785227186"/></div>
+<p class="det-cap">The zip, up close. It opens from either end.</p>
+<div class="zh">拉链特写。两头都能开。</div>
+
+</div>
+</div>
+<div class="shot-det-req" style="grid-column:1/-1">
+<span class="req-label">细节图待设计</span>
+<p class="req-brief">双向拉链特写，上下两个拉头都要清晰可见——这是这件最强的购买理由。</p>
+</div>
+</div></article>
+<article class="stop s3"><div class="stop-in">
+<div class="clock">8:05 PM</div>
+<div>
+<h2>Somehow, everyone’s in the same print.</h2>
+<div class="zh zh-lg">不知怎么，全家穿成了同一个花色。</div>
+<p class="why">One playful print, with matching sizes for the whole family.</p>
+<div class="buy"><span class="name">Bee Print Family Pajamas</span><span class="price">$23.99</span></div>
+<div class="fit">Snug fit · Size up for more room</div>
+<a class="cta" href="https://www.patpat.com/products/family-matching-bamboo-pajamas-soft-bamboo-viscose-pjs-for-men-women-kids-toddler-cute-bee-print-sleepwear-with-short-sleeve-top-and-long-pants-white" rel="noopener" target="_blank">Shop this →</a>
+<div class="zh">一个有趣的印花，全家都有合适尺码。<br/><span style="opacity:.75">蜜蜂印花亲子睡衣</span></div>
+
+</div>
+<div class="shot"><img alt="Family in matching white bee-and-flower print short-sleeve bamboo pajamas" src="https://cdn.shopify.com/s/files/1/0705/3885/4643/files/01_8609dc9a-88af-47b4-917e-06be809d340c.webp?v=1783156637" width="440"/></div>
+<div class="shot-det-req" style="grid-column:1/-1">
+<span class="req-label">细节图待设计</span>
+<p class="req-brief">展示衣服的印花</p>
+</div>
+</div></article>
+<article class="stop s4"><div class="stop-in">
+<div class="clock">8:20 PM</div>
+<div>
+<h2>Matching, but Make It Classic</h2>
+<div class="zh zh-lg">亲子装，也可以很经典。</div>
+<p class="why">Classic piping makes matching pajamas feel polished, not overly themed.</p>
+<div class="buy"><span class="name">Classic Blue Family Pajamas</span><span class="price">$21.99</span></div>
+<div class="fit">Regular adult fit · Snug kids’ fit</div>
+<a class="cta" href="https://www.patpat.com/products/family-matching-bamboo-pajamas-soft-bamboo-viscose-pjs-for-men-women-kids-toddler-baby-classic-blue-short-sleeve-sleepwear-with-button-down-shirt-and-pants-blue-grey" rel="noopener" target="_blank">Shop this →</a>
+<div class="zh">经典滚边让亲子睡衣更精致，不会显得主题感太重。<br/><span style="opacity:.75">经典蓝亲子睡衣</span></div>
+
+</div>
+<div class="shotcol">
+<div class="shot"><img alt="Family in classic blue-grey button-down bamboo pajama sets" src="https://cdn.shopify.com/s/files/1/0705/3885/4643/files/01_af90e006-ef25-43fd-8dde-5969206a4519.webp?v=1783149758" width="440"/></div>
+<div>
+<div class="shot-det"><img alt="Close-up detail of the classic blue-grey bamboo pajama shirt" src="https://cdn.shopify.com/s/files/1/0705/3885/4643/files/06_ec521504-8d62-4085-bbd2-e5cf614032c5.webp?v=1783149758"/></div>
+<p class="det-cap">The collar, up close. Piped, not printed.</p>
+<div class="zh">翻领特写。是滚边，不是印上去的。</div>
+
+</div>
+</div>
+<div class="shot-det-req" style="grid-column:1/-1">
+<span class="req-label">细节图待设计</span>
+<p class="req-brief">改成高级面料质感微距/垂坠感，证明纯色的高级柔软。</p>
+</div>
+</div></article>
+<article class="stop s5"><div class="stop-in">
+<div class="clock">8:40 PM</div>
+<div>
+<h2>Cozy Without the Swaddle</h2>
+<div class="zh zh-lg">不裹襁褓，也能安稳舒适。</div>
+<p class="why">A soft knotted gown for those in-between newborn weeks.</p>
+<div class="buy"><span class="name">Knotted Bamboo Baby Gown</span><span class="price">$19.99</span></div>
+<div class="fit">One size for newborns</div>
+<a class="cta" href="https://www.patpat.com/products/bamboo-baby-boygirl-sleeping-bag-infant-gown-with-hat-light-green" rel="noopener" target="_blank">Shop this →</a>
+<div class="zh">柔软的打结睡袍，适合新生儿成长过渡期。<br/><span style="opacity:.75">竹纤维婴儿打结睡袍</span></div>
+
+</div>
+<div class="shotcol">
+<div class="shot"><img alt="Newborn in a light green knotted bamboo sleeping gown with matching hat" src="https://cdn.shopify.com/s/files/1/0705/3885/4643/files/01_8b069979-b6d6-407e-ba2e-cdae6b641f78.webp?v=1783592880" width="440"/></div>
+<div>
+<div class="shot-det"><img alt="Close-up detail of a light green bamboo sleeping gown" src="https://cdn.shopify.com/s/files/1/0705/3885/4643/files/03_6f89eae1-a81a-4a35-9fa6-3ad37d3b8a26.webp?v=1783592881"/></div>
+<p class="det-cap">The hem, up close. Tied, not sewn shut.</p>
+<div class="zh">下摆特写。是系上的，不是缝死的。</div>
+
+</div>
+</div>
+<div class="shot-det-req" style="grid-column:1/-1">
+<span class="req-label">细节图待设计</span>
+<p class="req-brief">底部打结结构特写，最好一张系好、一张松开，一眼看懂newborn这个设计的特别之处。</p>
+</div>
+</div></article>
+<article class="stop s6"><div class="stop-in">
+<div class="clock">2:14 AM</div>
+<div>
+<h2>You’re up too.</h2>
+<div class="zh zh-lg">你也醒着呢。</div>
+<p class="why">The same buttery-soft bamboo for the parent handling the midnight wake-up.</p>
+<div class="buy"><span class="name">Solid Bamboo Family Pajamas</span><span class="price">$21.99</span></div>
+<div class="fit">True to size · Size up between sizes</div>
+<a class="cta" href="https://www.patpat.com/products/family-matching-bamboo-pajamas-buttery-soft-bamboo-viscose-pjs-for-men-women-kids-toddler-baby-solid-color-short-sleeve-shirt-shorts-sleepwear-green" rel="noopener" target="_blank">Shop this →</a>
+<div class="zh">同样黄油般柔软的竹纤维，也给半夜起身安抚孩子的你。<br/><span style="opacity:.75">纯色竹纤维亲子睡衣</span></div>
+
+
+</div>
+<div class="shot"><img alt="Mother and toddler in matching green short-sleeve bamboo pajamas" src="https://cdn.shopify.com/s/files/1/0705/3885/4643/files/02_3daaa215-79ae-4f67-90f7-beed27560d2b.png?v=1785123675" width="440"/></div>
+</div></article>
+</div>
+<section class="proof">
+<div class="proof-in">
+<div><span class="n">401,000+</span><p>positive reviews from parents.</p><div class="zh">40 万+ 条家长好评。</div></div>
+<div><span class="n">4M+</span><p>families dressed since 2014.</p><div class="zh">2014 年至今，服务 400 万+ 家庭。</div></div>
+<div><span class="n">30 days</span><p>easy returns. Sizes are hard; sending it back isn’t.</p><div class="zh">30 天轻松退。尺码难挑，退回来不难。</div></div>
+</div>
+</section>
+<section class="allband">
+<div class="allband-in">
+<div>
+<div class="eyebrow" style="color:rgba(242,244,244,.6);margin-bottom:10px"><span class="dot"></span>Keep browsing</div>
+<h3>More Bamboo Favorites</h3>
+<div class="zh zh-lg">更多竹纤维人气款。</div>
+</div>
+<a class="pill" href="#">Shop All Bamboo →</a>
+</div>
+
+</section>
+<footer class="tail">
+<div class="tail-in" style="grid-template-columns:1fr">
+<div>
+<div class="eyebrow"><span class="dot"></span>Next Monday  ·  No. 33</div>
+<h3>Next Week: Daycare-Ready Cotton</h3>
+<p>Six soft, durable picks made for busy little days.</p>
+<a class="link" href="#">Come Back Monday →</a>
+<div class="zh">下周：适合日托的棉质精选。六件柔软耐穿、适合忙碌小日子的单品。</div>
+
+</div>
+
+</div>
+</footer>
+</main>
+<script>
+  var z=document.getElementById('zh');
+  z.addEventListener('click',function(){
+    var on=document.body.classList.toggle('zh-on');
+    this.textContent=on?'隐藏中文':'中文对照';
+    this.setAttribute('aria-pressed',String(on));
+  });
+</script>
+</body>
+</html>
